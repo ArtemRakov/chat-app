@@ -1,0 +1,23 @@
+---
+
+version: '3'
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: "make ci-check"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
+
