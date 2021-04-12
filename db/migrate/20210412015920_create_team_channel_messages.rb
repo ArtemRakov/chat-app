@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTeamChannelMessages < ActiveRecord::Migration[6.1]
   def change
     create_table :team_channel_messages do |t|

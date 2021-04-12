@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -9,7 +11,7 @@ class User < ApplicationRecord
   has_many :channels, through: :team_channel_members
   has_many :owned_teams,
            foreign_key: :owner_id,
-           class_name: "Team",
+           class_name: 'Team',
            dependent: :destroy,
            inverse_of: :owner
   has_many :messages, dependent: :destroy, class_name: 'Team::Channel::Message'
