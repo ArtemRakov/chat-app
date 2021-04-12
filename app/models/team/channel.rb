@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
-module Team
-  class Channel < ApplicationRecord
-    validates :name, presence: true
-    validates :slug, presence: true, uniqueness: true
+class Team::Channel < ApplicationRecord
+  DEFAULT = 'general'
 
-    has_many :messages, dependent: :destroy
-    has_many :channel_members, dependent: :destroy
-    has_many :users, through: :channel_members
-    belongs_to :team
+  validates :slug, presence: true, uniqueness: { scope: :team }
 
-    def to_s
-      name
-    end
+  has_many :messages, dependent: :destroy
+  has_many :members, dependent: :destroy
+  has_many :users, through: :channel_members
+  belongs_to :team
+
+  def to_s
+    name
   end
 end

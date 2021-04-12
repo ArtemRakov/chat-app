@@ -5,9 +5,9 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-  has_many :team_members, dependent: :destroy
+  has_many :team_members, dependent: :destroy, class_name: 'Team::Member'
   has_many :teams, through: :team_members
-  has_many :team_channel_members, dependent: :destroy
+  # has_many :team_channel_members, dependent: :destroy
   has_many :channels, through: :team_channel_members
   has_many :owned_teams,
            foreign_key: :owner_id,

@@ -2,11 +2,11 @@
 
 class Web::Account::TeamsController < Web::Account::ApplicationController
   def index
-    @teams = @current_user.teams
+    @teams = current_user.teams
   end
 
   def new
-    @team = Team.new
+    @team = current_user.teams.build
   end
 
   def create
@@ -22,6 +22,6 @@ class Web::Account::TeamsController < Web::Account::ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :slug)
   end
 end

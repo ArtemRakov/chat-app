@@ -57,4 +57,4 @@ webpacker:
 editor-setup:
 	bundle exec solargraph bundle
 
-.PHONY: tests
+.PHONY: test

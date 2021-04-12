@@ -10,7 +10,7 @@ class Web::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'create' do
     user_params = FactoryBot.attributes_for(:user)
-    post users_url, params: { user_sign_up_form: user_params }
+    post users_path, params: { user_sign_up_form: user_params }
     assert_response :redirect
 
     user = User.find_by email: user_params[:email].downcase

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-module Team
-  class Member < ApplicationRecord
-    belongs_to :user
-    belongs_to :team
-  end
+class Team::Member < ApplicationRecord
+  belongs_to :user
+  belongs_to :team
 end

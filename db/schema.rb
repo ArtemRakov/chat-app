@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_020601) do
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["slug"], name: "index_team_channels_on_slug", unique: true
+    t.index ["team_id", "slug"], name: "index_team_channels_on_team_id_and_slug", unique: true
     t.index ["team_id"], name: "index_team_channels_on_team_id"
   end
 
