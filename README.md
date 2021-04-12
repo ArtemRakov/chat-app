@@ -1,24 +1,16 @@
-# README
+## Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Required
 
-Things you may want to cover:
+* docker
+* docker compose
 
-* Ruby version
+### Steps
 
-* System dependencies
 
-* Configuration
+```sh
+$ make project-setup
+$ make compose # run server
+# open localhost:3000
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+$ make test # run tests
