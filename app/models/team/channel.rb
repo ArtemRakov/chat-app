@@ -3,7 +3,7 @@
 module Team
   class Channel < ApplicationRecord
     validates :name, presence: true
-    validates :slug, presence: true, unique: true
+    validates :slug, presence: true, uniqueness: true
 
     has_many :messages, dependent: :destroy
     has_many :channel_members, dependent: :destroy

@@ -1,0 +1,11 @@
+nav.px-3.navbar.navbar-light.navbar-expand-md.bg-white.shadow-sm.flex-shrink-0
+ a.navbar-brand(href="/") Chat app
+ .collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      - if current_user.guest?
+        = nav_menu_item t('.sign_in'), new_session_path
+        = nav_menu_item t('.registration'), new_user_path
+      - else
+        = nav_menu_item t('.Teams'), teams_path
+        = nav_menu_item t('.sign_out'), session_path, method: :delete, class: 'dropdown-item'
+

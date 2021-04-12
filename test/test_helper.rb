@@ -6,6 +6,8 @@ require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
+    include FactoryBot::Syntax::Methods
+
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
@@ -13,5 +15,15 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include AuthConcern
+
+  def sign_in_as(name)
+    user = users(name)
+    post session_path, params: { sign_in: { email: user.email, password: 'password' } }
+    user
   end
 end

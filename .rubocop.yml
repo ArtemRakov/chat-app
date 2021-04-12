@@ -47,7 +47,7 @@ Metrics/ModuleLength:
   Enabled: false
 Metrics/BlockLength:
   # Max: 100
-  Enabed: false
+  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/CyclomaticComplexity:

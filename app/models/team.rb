@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Team < ApplicationRecord
-  validates :slug, unique: true, presence: true
+  validates :slug, uniqueness: true, presence: true
   validates :name, presence: true
 
   has_many :team_members, dependent: :destroy
