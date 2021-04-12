@@ -7,4 +7,10 @@ environment.plugins.prepend("Provide", new webpack.ProvidePlugin({
   Popper: ['popper.js', 'default']
 }))
 
+environment.config.merge({
+  externals: {
+    gon: 'gon',
+  },
+});
+
 module.exports = environment

@@ -1,6 +1,6 @@
 .list-group
   - teams.each do |team|
-    = link_to team_path(team.slug), class: 'list-group-item list-group-item-action'
+    = link_to team_path(team), class: 'list-group-item list-group-item-action'
       .d-flex.w-100.justify-content-between
         h5.mb-1= team
         / small.text-muted= t('.users', count: team.users_count)

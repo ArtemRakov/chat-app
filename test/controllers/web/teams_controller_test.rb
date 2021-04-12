@@ -11,7 +11,7 @@ class Web::TeamsControllerTest < ActionDispatch::IntegrationTest
   test 'show' do
     team = teams(:one)
 
-    get team_path(team.slug)
+    get team_path(team)
     assert_response :redirect
   end
 end

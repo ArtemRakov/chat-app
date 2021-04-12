@@ -28,12 +28,13 @@ Rails.application.routes.draw do
     namespace :account do
       resources :teams, only: %i[index new create]
     end
+  end
 
-    # scope module: :api do
-    #   resources :channels, only: [] do
-    #     scope module: :channels do
-    #       resources :messages, only: [:create, :update, :destroy]
-    #     end
-    #   end
+  scope module: :api, defaults: { format: :json } do
+    resources :channels, only: [:show] do
+      scope module: :channels do
+        resources :messages, only: %i[create update destroy]
+      end
+    end
   end
 end

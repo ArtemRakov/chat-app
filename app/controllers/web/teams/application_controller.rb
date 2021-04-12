@@ -6,6 +6,6 @@ class Web::Teams::ApplicationController < Web::ApplicationController
   helper_method :resource_team
 
   def resource_team
-    @resource_team ||= Team.find_by!(slug: params[:team_id])
+    @resource_team ||= Team.find(params[:team_id])
   end
 end
