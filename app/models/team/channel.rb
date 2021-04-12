@@ -11,6 +11,6 @@ class Team::Channel < ApplicationRecord
   belongs_to :team
 
   def to_s
-    name
+    slug
   end
 end

@@ -8,6 +8,6 @@ class Web::TeamsController < Web::ApplicationController
   def show
     @team = Team.find_by(slug: params[:id])
 
-    redirect_to team_channel_path(@team, Team::Channel::DEFAULT)
+    redirect_to team_channel_path(@team.slug, Team::Channel::DEFAULT)
   end
 end

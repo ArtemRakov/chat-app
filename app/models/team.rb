@@ -13,4 +13,8 @@ class Team < ApplicationRecord
   def to_s
     name
   end
+
+  def guest?(user)
+    users.exclude?(user)
+  end
 end

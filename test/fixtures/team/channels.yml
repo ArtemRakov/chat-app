@@ -1,0 +1,8 @@
+
+one:
+  slug: 'general'
+  team: one
+
+two:
+  slug: 'ruby'
+  team: two
