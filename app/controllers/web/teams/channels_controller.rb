@@ -3,11 +3,9 @@
 class Web::Teams::ChannelsController < Web::Teams::ApplicationController
   def show
     @channel = resource_team.channels.find(params[:id])
+    @messages = @channel.messages.includes(:user)
 
-    gon.messages = @channel.messages
-    gon.user = current_user
-    gon.channel = @channel
-    gon.channels = resource_team.channels
+    gon.jbuilder
   end
 
   def new
