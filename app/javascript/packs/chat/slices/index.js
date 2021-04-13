@@ -14,7 +14,7 @@ export const actions = {
 };
 
 export const setupState = (gon) => (dispatch) => {
-  console.log(gon)
+  console.log(gon);
 
   const { messages, channel, channels } = gon;
 
