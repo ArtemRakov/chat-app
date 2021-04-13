@@ -14,8 +14,6 @@ export const actions = {
 };
 
 export const setupState = (gon) => (dispatch) => {
-  console.log(gon);
-
   const { messages, channel, channels } = gon;
 
   dispatch(channelsActions.changeActiveChannel({ newChannel: channel }));

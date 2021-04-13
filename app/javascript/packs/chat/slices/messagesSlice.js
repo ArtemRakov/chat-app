@@ -6,8 +6,8 @@ import { actions as channelsActions } from './channelsSlice.js';
 
 const createMessage = createAsyncThunk('createMessage', async (_, { getState }) => {
   const { activeChannel } = getState().channelsSlice;
-  const newMessagePath = routes.channel_messages_path(activeChannel.id);
   const { newMessage } = getState().messagesSlice;
+  const newMessagePath = routes.channel_messages_path(activeChannel.id);
 
   const response = await axios.post(newMessagePath, {
     team_channel_message: {
@@ -15,6 +15,11 @@ const createMessage = createAsyncThunk('createMessage', async (_, { getState }) 
     },
   });
 
+  return response.data;
+});
+
+const deleteMessage = createAsyncThunk('deleteMessage', async (message) => {
+  const response = await axios.delete(routes.channel_message_path(message.channel_id, message.id));
   return response.data;
 });
 
@@ -40,6 +45,10 @@ const slice = createSlice({
         state.newMessage = '';
       });
     builder
+      .addCase(deleteMessage.fulfilled, (state, { payload }) => {
+        state.messages = state.messages.filter((message) => message.id !== payload.id);
+      });
+    builder
       .addCase(channelsActions.fetchChannel.fulfilled, (state, { payload }) => {
         state.messages = payload.messages;
         state.newMessage = '';
@@ -50,6 +59,7 @@ const slice = createSlice({
 export const actions = {
   ...slice.actions,
   createMessage,
+  deleteMessage,
 };
 
 export default slice.reducer;

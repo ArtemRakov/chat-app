@@ -44,7 +44,7 @@ const ChatNav = () => {
       <ul className="nav flex-column nav-pills">
         <li className="nav-item">
           <a className="nav-link" href={routes.new_team_channel_path(activeChannel.team_id)}>
-            { t('new_channel') }
+            { t('create_new_channel') }
           </a>
         </li>
       </ul>
