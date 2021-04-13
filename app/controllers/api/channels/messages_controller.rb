@@ -5,9 +5,9 @@ class Api::Channels::MessagesController < Api::Channels::ApplicationController
     @message = resource_channel.messages.build(message_params.merge(user: current_user, team: resource_channel.team))
 
     if @message.save
-      render json: @message, status: :created
+      render :create, status: :ok
     else
-      render json: @message, status: :unprocessable_entity
+      render json: @message.errors, status: :unprocessable_entity
     end
   end
 
