@@ -27,10 +27,10 @@ const NewMessage = () => {
     <Form className="mr-5" onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Control type="text" value={newMessage} onChange={changeNewMessage} />
-        <Button variant="primary" type="submit">
-          { t('submit') }
-        </Button>
       </Form.Group>
+      <Button variant="primary" type="submit">
+        { t('submit') }
+      </Button>
     </Form>
   );
 };

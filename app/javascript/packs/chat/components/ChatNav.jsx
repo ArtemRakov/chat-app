@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Nav } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import cn from 'classnames';
 
 import { actions } from '../slices/index.js';
 import routes from '../../../routes.js';
@@ -18,18 +19,36 @@ const ChatNav = () => {
     dispatch(actions.fetchChannel(channel));
   };
 
+  const listItem = (channel) => {
+    const classes = cn({
+      'nav-link': true,
+      'w-100': true,
+      active: channel.id === activeChannel.id,
+    });
+
+    return (
+      <li key={channel.id} className="nav-item">
+        <Button variant="link" onClick={changeChannel(channel)} className={classes}>
+          {channel.slug}
+        </Button>
+      </li>
+    );
+  };
+
   return (
-    <Nav variant="pills" defaultActiveKey={activeChannel.id}>
-      {channels.map((channel) => (
-        <Nav.Item key={channel.id}>
-          <Nav.Link onClick={changeChannel(channel)} eventKey={channel.id}>{channel.slug}</Nav.Link>
-        </Nav.Item>
-      ))}
-      <br />
-      <Nav.Item>
-        <Nav.Link href={routes.new_team_channel_path(activeChannel.team_id)}>{ t('new_channel') }</Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <>
+      <ul className="nav flex-column nav-pills">
+        {channels.map(listItem)}
+      </ul>
+      <hr className="my-3" />
+      <ul className="nav flex-column nav-pills">
+        <li className="nav-item">
+          <a className='nav-link' href={routes.new_team_channel_path(activeChannel.team_id)}>
+            { t('new_channel') }
+          </a>
+        </li>
+      </ul>
+    </>
   );
 };
 
