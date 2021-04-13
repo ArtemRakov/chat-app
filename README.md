@@ -1,3 +1,5 @@
+I also deployed app to heroku [link](https://polar-wave-00681.herokuapp.com/)
+
 ## Setup
 
 ### Required
